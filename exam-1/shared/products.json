@@ -1,0 +1,902 @@
+[
+  {
+    "id": 1,
+    "name": "나이키 에어맥스 97 OG 실버불릿 남녀공용 러닝화",
+    "price": 199000,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/1/400/400",
+    "createdAt": "2025-12-01T09:00:00Z",
+    "rating": 4.5
+  },
+  {
+    "id": 2,
+    "name": "아디다스 오리지널스 삼바 OG 클래식 레더 스니커즈 화이트/그린",
+    "price": 139000,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/2/400/400",
+    "createdAt": "2025-11-15T14:30:00Z",
+    "rating": 4.7
+  },
+  {
+    "id": 3,
+    "name": "뉴발란스 530 레트로 러닝화 실버/화이트",
+    "price": 129000,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/3/400/400",
+    "createdAt": "2025-10-20T11:00:00Z",
+    "rating": 4.3
+  },
+  {
+    "id": 4,
+    "name": "컨버스 척테일러 올스타 70 하이탑 블랙",
+    "price": 95000,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/4/400/400",
+    "createdAt": "2026-01-05T08:00:00Z",
+    "rating": 4.6
+  },
+  {
+    "id": 5,
+    "name": "[무신사 단독] 나이키 덩크 로우 레트로 팬더 남녀공용 캐주얼 스니커즈 (DD1391-100)",
+    "price": 149000,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/5/400/400",
+    "createdAt": "2025-12-22T16:00:00Z",
+    "rating": 4.8
+  },
+  {
+    "id": 6,
+    "name": "반스 올드스쿨 클래식 스케이트 슈즈",
+    "price": 69000,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/6/400/400",
+    "createdAt": "2025-09-30T10:00:00Z",
+    "rating": 4.1
+  },
+  {
+    "id": 7,
+    "name": "아식스 젤카야노 14 레트로 테크 러닝화 실버/다크그레이",
+    "price": 189000,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/7/400/400",
+    "createdAt": "2026-02-10T13:00:00Z",
+    "rating": 4.4
+  },
+  {
+    "id": 8,
+    "name": "닥터마틴 1461 3홀 옥스포드 블랙 스무스 레더",
+    "price": 230000,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/8/400/400",
+    "createdAt": "2025-11-03T09:30:00Z",
+    "rating": 4.2
+  },
+  {
+    "id": 9,
+    "name": "살로몬 XT-6 어드밴스드 트레일 러닝화 블랙/팬텀",
+    "price": 259000,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/9/400/400",
+    "createdAt": "2026-01-18T15:00:00Z",
+    "rating": 4.9
+  },
+  {
+    "id": 10,
+    "name": "푸마 스웨이드 클래식 XXI 로우탑 스니커즈",
+    "price": 79000,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/10/400/400",
+    "createdAt": "2025-10-12T12:00:00Z",
+    "rating": 3.8
+  },
+  {
+    "id": 11,
+    "name": "나이키 에어포스 1 '07 로우 화이트",
+    "price": 139000,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/11/400/400",
+    "createdAt": "2026-02-28T08:00:00Z",
+    "rating": 4.7
+  },
+  {
+    "id": 12,
+    "name": "리복 클래식 레더 빈티지 러닝화 퓨어그레이",
+    "price": 109000,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/12/400/400",
+    "createdAt": "2025-10-05T11:30:00Z",
+    "rating": 3.9
+  },
+  {
+    "id": 13,
+    "name": "[한정판] 아디다스 이지부스트 350 V2 제브라 남녀공용 라이프스타일 스니커즈",
+    "price": 349000,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/13/400/400",
+    "createdAt": "2026-03-01T09:00:00Z",
+    "rating": 4.6
+  },
+  {
+    "id": 14,
+    "name": "호카 본디 8 쿠셔닝 로드 러닝화 블랙/블랙",
+    "price": 229000,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/14/400/400",
+    "createdAt": "2025-12-10T14:00:00Z",
+    "rating": 4.5
+  },
+  {
+    "id": 15,
+    "name": "크록스 클래식 클로그 블랙",
+    "price": 54900,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/15/400/400",
+    "createdAt": "2026-01-25T10:00:00Z",
+    "rating": 4.0
+  },
+  {
+    "id": 16,
+    "name": "뉴발란스 2002R 프로텍션팩 레인클라우드 남녀공용 캐주얼화",
+    "price": 169000,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/16/400/400",
+    "createdAt": "2025-11-20T09:00:00Z",
+    "rating": 4.4
+  },
+  {
+    "id": 17,
+    "name": "팀버랜드 6인치 프리미엄 워터프루프 부츠 위트",
+    "price": 269000,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/17/400/400",
+    "createdAt": "2025-12-05T11:00:00Z",
+    "rating": 4.3
+  },
+  {
+    "id": 18,
+    "name": "나이키 줌 보메로 5 포토블루 남성용 러닝화 (HF1553-400)",
+    "price": 189000,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/18/400/400",
+    "createdAt": "2026-01-10T08:30:00Z",
+    "rating": 4.2
+  },
+  {
+    "id": 19,
+    "name": "버켄스탁 아리조나 소프트풋베드 토프 스웨이드 레더 샌들",
+    "price": 175000,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/19/400/400",
+    "createdAt": "2025-10-25T14:00:00Z",
+    "rating": 4.1
+  },
+  {
+    "id": 20,
+    "name": "언더아머 호버 팬텀 3 SE 런닝화 블랙",
+    "price": 179000,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/20/400/400",
+    "createdAt": "2026-02-15T10:00:00Z",
+    "rating": 3.7
+  },
+  {
+    "id": 21,
+    "name": "아디다스 울트라부스트 라이트 23 남성 퍼포먼스 러닝화 코어블랙/코어블랙",
+    "price": 219000,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/21/400/400",
+    "createdAt": "2025-09-28T09:00:00Z",
+    "rating": 4.6
+  },
+  {
+    "id": 22,
+    "name": "미즈노 웨이브 라이더 27 안정화 러닝화",
+    "price": 169000,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/22/400/400",
+    "createdAt": "2026-01-30T13:00:00Z",
+    "rating": 4.0
+  },
+  {
+    "id": 23,
+    "name": "스케쳐스 고워크 7 슬립온 경량 워킹화 네이비",
+    "price": 89000,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/23/400/400",
+    "createdAt": "2025-11-08T16:00:00Z",
+    "rating": 3.6
+  },
+  {
+    "id": 24,
+    "name": "[24SS 신상] 나이키 에어 조던 1 로우 OG 시카고 남녀공용 농구화 레드/화이트/블랙 (CZ0790-161)",
+    "price": 169000,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/24/400/400",
+    "createdAt": "2025-12-18T10:30:00Z",
+    "rating": 4.8
+  },
+  {
+    "id": 25,
+    "name": "무지 경량 메쉬 슬리퍼",
+    "price": 19900,
+    "category": "shoes",
+    "imageUrl": "https://picsum.photos/seed/25/400/400",
+    "createdAt": "2026-02-05T11:00:00Z",
+    "rating": 3.2
+  },
+  {
+    "id": 26,
+    "name": "무신사 스탠다드 릴랙스드 핏 크루넥 반팔 티셔츠",
+    "price": 15900,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/26/400/400",
+    "createdAt": "2025-10-15T09:00:00Z",
+    "rating": 4.3
+  },
+  {
+    "id": 27,
+    "name": "유니클로 에어리즘 코튼 오버사이즈 크루넥 T (반팔)",
+    "price": 19900,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/27/400/400",
+    "createdAt": "2026-03-05T14:00:00Z",
+    "rating": 4.1
+  },
+  {
+    "id": 28,
+    "name": "[2+1 이벤트] 헤비웨이트 280g 오버핏 무지 반팔 티셔츠 남녀공용 14컬러",
+    "price": 12900,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/28/400/400",
+    "createdAt": "2025-11-25T08:00:00Z",
+    "rating": 4.5
+  },
+  {
+    "id": 29,
+    "name": "칼하트 WIP 포켓 반팔 티셔츠 블랙",
+    "price": 59000,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/29/400/400",
+    "createdAt": "2026-01-15T15:00:00Z",
+    "rating": 4.2
+  },
+  {
+    "id": 30,
+    "name": "폴로 랄프로렌 커스텀 슬림핏 메쉬 폴로셔츠 네이비",
+    "price": 159000,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/30/400/400",
+    "createdAt": "2025-12-28T12:00:00Z",
+    "rating": 4.4
+  },
+  {
+    "id": 31,
+    "name": "스투시 베이직 로고 후디 블랙",
+    "price": 169000,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/31/400/400",
+    "createdAt": "2025-11-10T09:00:00Z",
+    "rating": 4.0
+  },
+  {
+    "id": 32,
+    "name": "나이키 스포츠웨어 클럽 플리스 풀오버 맨투맨 그레이",
+    "price": 69000,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/32/400/400",
+    "createdAt": "2025-12-03T11:00:00Z",
+    "rating": 4.3
+  },
+  {
+    "id": 33,
+    "name": "[무신사 단독] 디스이즈네버댓 T.N.T 클래식 HDP 로고 스웻셔츠 오트밀 남녀공용",
+    "price": 79000,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/33/400/400",
+    "createdAt": "2025-10-08T14:00:00Z",
+    "rating": 4.6
+  },
+  {
+    "id": 34,
+    "name": "메종키츠네 폭스헤드 패치 클래식 티셔츠 블랙",
+    "price": 135000,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/34/400/400",
+    "createdAt": "2026-01-20T08:00:00Z",
+    "rating": 4.1
+  },
+  {
+    "id": 35,
+    "name": "아디다스 오리지널스 트레포일 에센셜 크루넥 스웻셔츠",
+    "price": 79000,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/35/400/400",
+    "createdAt": "2026-02-12T10:00:00Z",
+    "rating": 3.9
+  },
+  {
+    "id": 36,
+    "name": "커버낫 어센틱 로고 크루넥 스웨트셔츠 네이비",
+    "price": 69000,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/36/400/400",
+    "createdAt": "2025-09-25T13:00:00Z",
+    "rating": 4.2
+  },
+  {
+    "id": 37,
+    "name": "[겨울 한정] 파타고니아 레트로 X 플리스 자켓 내추럴 남녀공용 보아플리스",
+    "price": 279000,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/37/400/400",
+    "createdAt": "2026-03-10T09:30:00Z",
+    "rating": 4.8
+  },
+  {
+    "id": 38,
+    "name": "노스페이스 1996 에코 눕시 다운 자켓 블랙",
+    "price": 359000,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/38/400/400",
+    "createdAt": "2025-11-28T16:00:00Z",
+    "rating": 4.7
+  },
+  {
+    "id": 39,
+    "name": "톰브라운 클래식 4바 스트라이프 옥스포드 셔츠 화이트 (MWL010E-06177-100)",
+    "price": 598000,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/39/400/400",
+    "createdAt": "2025-12-15T11:30:00Z",
+    "rating": 4.5
+  },
+  {
+    "id": 40,
+    "name": "무신사 스탠다드 라이트 옥스포드 버튼다운 셔츠 스카이블루",
+    "price": 29900,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/40/400/400",
+    "createdAt": "2026-02-20T08:00:00Z",
+    "rating": 4.0
+  },
+  {
+    "id": 41,
+    "name": "나이키 드라이핏 ADV 테크니컬 트레이닝 반팔 티셔츠",
+    "price": 59000,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/41/400/400",
+    "createdAt": "2025-10-18T10:00:00Z",
+    "rating": 3.8
+  },
+  {
+    "id": 42,
+    "name": "아미 파리 하트 로고 오버사이즈 반팔 티셔츠 화이트",
+    "price": 215000,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/42/400/400",
+    "createdAt": "2026-01-08T14:00:00Z",
+    "rating": 4.3
+  },
+  {
+    "id": 43,
+    "name": "[베스트셀러] 에스피오나지 해리슨 풀오버 후드 스웨트셔츠 멜란지그레이 남녀공용 기모 안감",
+    "price": 62000,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/43/400/400",
+    "createdAt": "2025-12-30T09:00:00Z",
+    "rating": 4.4
+  },
+  {
+    "id": 44,
+    "name": "스톤아일랜드 와펜패치 크루넥 맨투맨 블랙 (801563051)",
+    "price": 435000,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/44/400/400",
+    "createdAt": "2026-03-15T11:00:00Z",
+    "rating": 4.6
+  },
+  {
+    "id": 45,
+    "name": "챔피온 리버스위브 크루넥 맨투맨 옥스포드그레이",
+    "price": 89000,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/45/400/400",
+    "createdAt": "2025-10-30T15:00:00Z",
+    "rating": 4.0
+  },
+  {
+    "id": 46,
+    "name": "라코스테 클래식핏 L.12.12 폴로셔츠 그린",
+    "price": 145000,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/46/400/400",
+    "createdAt": "2025-11-05T09:00:00Z",
+    "rating": 4.2
+  },
+  {
+    "id": 47,
+    "name": "아크네 스튜디오 내쉬 페이스 미니 크루넥 티셔츠 옵틱화이트",
+    "price": 198000,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/47/400/400",
+    "createdAt": "2025-12-08T11:00:00Z",
+    "rating": 3.9
+  },
+  {
+    "id": 48,
+    "name": "코드그라피 CGP 아치 로고 맨투맨 라이트그레이",
+    "price": 49000,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/48/400/400",
+    "createdAt": "2025-10-02T14:00:00Z",
+    "rating": 4.1
+  },
+  {
+    "id": 49,
+    "name": "[시즌오프 세일] 나이키 테크 플리스 풀집업 후디 자켓 블랙 남성용 스포츠웨어 (FB7921-010)",
+    "price": 159000,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/49/400/400",
+    "createdAt": "2026-01-12T08:00:00Z",
+    "rating": 4.5
+  },
+  {
+    "id": 50,
+    "name": "일꼬르소 베이직 니트 가디건 크림",
+    "price": 45000,
+    "category": "tops",
+    "imageUrl": "https://picsum.photos/seed/50/400/400",
+    "createdAt": "2026-02-18T10:00:00Z",
+    "rating": 3.7
+  },
+  {
+    "id": 51,
+    "name": "무신사 스탠다드 와이드 스트레이트 데님 팬츠 인디고",
+    "price": 39900,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/51/400/400",
+    "createdAt": "2025-09-22T13:00:00Z",
+    "rating": 4.4
+  },
+  {
+    "id": 52,
+    "name": "리바이스 501 오리지널 스트레이트핏 데님 진 미디엄 인디고",
+    "price": 109000,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/52/400/400",
+    "createdAt": "2026-03-08T09:30:00Z",
+    "rating": 4.5
+  },
+  {
+    "id": 53,
+    "name": "나이키 스포츠웨어 클럽 플리스 조거 팬츠 블랙",
+    "price": 69000,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/53/400/400",
+    "createdAt": "2025-11-18T16:00:00Z",
+    "rating": 4.3
+  },
+  {
+    "id": 54,
+    "name": "디스이즈네버댓 리플렉티브 나일론 와이드 카고 팬츠 블랙",
+    "price": 89000,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/54/400/400",
+    "createdAt": "2025-12-20T11:30:00Z",
+    "rating": 4.2
+  },
+  {
+    "id": 55,
+    "name": "[무신사 단독] 커버낫 피그먼트 와이드 코튼 팬츠 베이지 남녀공용 세미와이드 핏",
+    "price": 59000,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/55/400/400",
+    "createdAt": "2026-02-01T08:00:00Z",
+    "rating": 4.0
+  },
+  {
+    "id": 56,
+    "name": "아디다스 오리지널스 파이어버드 트랙 팬츠 블랙/화이트",
+    "price": 89000,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/56/400/400",
+    "createdAt": "2025-10-22T10:00:00Z",
+    "rating": 4.1
+  },
+  {
+    "id": 57,
+    "name": "유니클로 와이드핏 턱 팬츠 올리브",
+    "price": 49900,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/57/400/400",
+    "createdAt": "2026-01-28T14:00:00Z",
+    "rating": 3.9
+  },
+  {
+    "id": 58,
+    "name": "칼하트 WIP 싱글 니 팬츠 블랙 린스드",
+    "price": 169000,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/58/400/400",
+    "createdAt": "2026-03-12T09:00:00Z",
+    "rating": 4.3
+  },
+  {
+    "id": 59,
+    "name": "[인기상품] 그라미치 G-쇼츠 뉴내로우 올리브 남녀공용 클라이밍 쇼츠 미드컷",
+    "price": 98000,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/59/400/400",
+    "createdAt": "2025-11-30T15:00:00Z",
+    "rating": 4.6
+  },
+  {
+    "id": 60,
+    "name": "스톤아일랜드 카고 팬츠 블랙 와펜",
+    "price": 498000,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/60/400/400",
+    "createdAt": "2026-02-25T12:00:00Z",
+    "rating": 4.4
+  },
+  {
+    "id": 61,
+    "name": "무신사 스탠다드 원턱 테이퍼드 슬랙스 차콜",
+    "price": 34900,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/61/400/400",
+    "createdAt": "2025-12-12T09:00:00Z",
+    "rating": 4.2
+  },
+  {
+    "id": 62,
+    "name": "리바이스 505 레귤러핏 데님 블랙",
+    "price": 99000,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/62/400/400",
+    "createdAt": "2026-01-03T11:00:00Z",
+    "rating": 4.0
+  },
+  {
+    "id": 63,
+    "name": "나이키 ACG 스미스 서밋 카고 팬츠 카키 (DX6490-247)",
+    "price": 179000,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/63/400/400",
+    "createdAt": "2025-10-28T14:00:00Z",
+    "rating": 4.5
+  },
+  {
+    "id": 64,
+    "name": "노스페이스 에코 플리스 와이드 팬츠 블랙",
+    "price": 119000,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/64/400/400",
+    "createdAt": "2026-02-08T10:00:00Z",
+    "rating": 3.8
+  },
+  {
+    "id": 65,
+    "name": "브렌슨 프렌치 워크웨어 와이드 코튼 린넨 팬츠 네이비",
+    "price": 56000,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/65/400/400",
+    "createdAt": "2025-09-20T08:00:00Z",
+    "rating": 4.1
+  },
+  {
+    "id": 66,
+    "name": "[한정 수량] 아크네 스튜디오 1996 배기핏 데님 진 미디엄블루 남녀공용 (A00483-B01)",
+    "price": 420000,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/66/400/400",
+    "createdAt": "2025-11-15T13:00:00Z",
+    "rating": 4.3
+  },
+  {
+    "id": 67,
+    "name": "아디다스 에센셜 3스트라이프 트리코트 팬츠",
+    "price": 55000,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/67/400/400",
+    "createdAt": "2026-03-18T09:00:00Z",
+    "rating": 3.7
+  },
+  {
+    "id": 68,
+    "name": "스파오 쿨코튼 밴딩 이지 숏팬츠 블랙",
+    "price": 25900,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/68/400/400",
+    "createdAt": "2025-12-25T16:00:00Z",
+    "rating": 3.5
+  },
+  {
+    "id": 69,
+    "name": "오디너리피플 와이드 페인터 팬츠 크림화이트",
+    "price": 78000,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/69/400/400",
+    "createdAt": "2026-01-22T11:30:00Z",
+    "rating": 4.0
+  },
+  {
+    "id": 70,
+    "name": "우영미 시그니처 백 로고 와이드 팬츠 블랙",
+    "price": 389000,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/70/400/400",
+    "createdAt": "2025-10-10T09:30:00Z",
+    "rating": 4.7
+  },
+  {
+    "id": 71,
+    "name": "라퍼지스토어 세미 와이드 스웨트 팬츠 멜란지 그레이",
+    "price": 43000,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/71/400/400",
+    "createdAt": "2026-02-14T08:00:00Z",
+    "rating": 4.2
+  },
+  {
+    "id": 72,
+    "name": "코드그라피 CGP 아치로고 와이드 조거팬츠 블랙",
+    "price": 49000,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/72/400/400",
+    "createdAt": "2025-11-22T15:00:00Z",
+    "rating": 3.9
+  },
+  {
+    "id": 73,
+    "name": "노스페이스 화이트라벨 코튼 와이드 팬츠 베이지",
+    "price": 89000,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/73/400/400",
+    "createdAt": "2026-03-02T10:00:00Z",
+    "rating": 4.1
+  },
+  {
+    "id": 74,
+    "name": "유니클로 스마트 앵클 팬츠 2WAY 스트레치 다크그레이",
+    "price": 39900,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/74/400/400",
+    "createdAt": "2025-12-08T14:00:00Z",
+    "rating": 4.3
+  },
+  {
+    "id": 75,
+    "name": "인사일런스 와이드 카고 데님 팬츠 라이트블루",
+    "price": 79000,
+    "category": "bottoms",
+    "imageUrl": "https://picsum.photos/seed/75/400/400",
+    "createdAt": "2026-01-15T09:00:00Z",
+    "rating": 3.8
+  },
+  {
+    "id": 76,
+    "name": "나이키 헤리티지86 퓨추라 워시드 볼캡 블랙",
+    "price": 35000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/76/400/400",
+    "createdAt": "2025-11-01T09:00:00Z",
+    "rating": 4.3
+  },
+  {
+    "id": 77,
+    "name": "애플워치 시리즈 9 45mm GPS 미드나이트 알루미늄 케이스",
+    "price": 599000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/77/400/400",
+    "createdAt": "2025-12-15T11:00:00Z",
+    "rating": 4.8
+  },
+  {
+    "id": 78,
+    "name": "[무신사 단독] 마리떼 프랑소와 저버 클래식 로고 에코백 블랙 남녀공용 대용량 캔버스",
+    "price": 32000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/78/400/400",
+    "createdAt": "2025-10-05T14:00:00Z",
+    "rating": 4.1
+  },
+  {
+    "id": 79,
+    "name": "레이밴 에비에이터 클래식 선글라스 골드/그린 (RB3025)",
+    "price": 198000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/79/400/400",
+    "createdAt": "2026-01-20T08:00:00Z",
+    "rating": 4.6
+  },
+  {
+    "id": 80,
+    "name": "아크테릭스 만티스 26 백팩 블랙",
+    "price": 189000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/80/400/400",
+    "createdAt": "2026-02-10T10:00:00Z",
+    "rating": 4.7
+  },
+  {
+    "id": 81,
+    "name": "스투시 빅 로고 비니 블랙",
+    "price": 55000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/81/400/400",
+    "createdAt": "2025-09-18T13:00:00Z",
+    "rating": 4.0
+  },
+  {
+    "id": 82,
+    "name": "구찌 GG 마몬트 카드 케이스 블랙 레더",
+    "price": 450000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/82/400/400",
+    "createdAt": "2026-03-05T09:30:00Z",
+    "rating": 4.5
+  },
+  {
+    "id": 83,
+    "name": "무신사 스탠다드 캔버스 미니 크로스백 블랙",
+    "price": 29900,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/83/400/400",
+    "createdAt": "2025-11-12T16:00:00Z",
+    "rating": 3.9
+  },
+  {
+    "id": 84,
+    "name": "[베스트] 디스이즈네버댓 메쉬 로고 5패널 캡 블랙 남녀공용 스냅백",
+    "price": 45000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/84/400/400",
+    "createdAt": "2025-12-22T11:30:00Z",
+    "rating": 4.2
+  },
+  {
+    "id": 85,
+    "name": "시티보이 울 블렌드 머플러 라이트그레이",
+    "price": 38000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/85/400/400",
+    "createdAt": "2026-01-30T08:00:00Z",
+    "rating": 3.7
+  },
+  {
+    "id": 86,
+    "name": "다니엘웰링턴 페티트 28mm 로즈골드 메쉬 밴드 시계",
+    "price": 248000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/86/400/400",
+    "createdAt": "2026-02-20T10:00:00Z",
+    "rating": 4.4
+  },
+  {
+    "id": 87,
+    "name": "노스페이스 보레알리스 클래식 백팩 28L 블랙",
+    "price": 119000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/87/400/400",
+    "createdAt": "2025-10-08T15:00:00Z",
+    "rating": 4.5
+  },
+  {
+    "id": 88,
+    "name": "캉골 504 베레모 버뮤다 캐주얼 블랙",
+    "price": 79000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/88/400/400",
+    "createdAt": "2025-12-01T09:00:00Z",
+    "rating": 4.0
+  },
+  {
+    "id": 89,
+    "name": "젠틀몬스터 마이마 01 선글라스 블랙 오버사이즈 아세테이트 프레임",
+    "price": 289000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/89/400/400",
+    "createdAt": "2026-03-12T14:00:00Z",
+    "rating": 4.6
+  },
+  {
+    "id": 90,
+    "name": "마뗑킴 미니 버킷백 블랙 크로스바디",
+    "price": 68000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/90/400/400",
+    "createdAt": "2025-11-25T10:00:00Z",
+    "rating": 4.3
+  },
+  {
+    "id": 91,
+    "name": "아디다스 오리지널스 트레포일 볼캡 블랙/화이트",
+    "price": 32000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/91/400/400",
+    "createdAt": "2026-01-05T13:00:00Z",
+    "rating": 4.1
+  },
+  {
+    "id": 92,
+    "name": "[한정] 슈프림 x 노스페이스 눕시 미트 글러브 블랙 남녀공용 방한 장갑",
+    "price": 178000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/92/400/400",
+    "createdAt": "2025-10-20T09:00:00Z",
+    "rating": 4.4
+  },
+  {
+    "id": 93,
+    "name": "이솝 레저렉션 핸드밤 75mL",
+    "price": 37000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/93/400/400",
+    "createdAt": "2026-02-28T11:00:00Z",
+    "rating": 4.8
+  },
+  {
+    "id": 94,
+    "name": "무인양품 나일론 미니 숄더백 블랙",
+    "price": 25000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/94/400/400",
+    "createdAt": "2025-12-10T08:30:00Z",
+    "rating": 3.6
+  },
+  {
+    "id": 95,
+    "name": "폴스미스 멀티 스트라이프 레더 카드지갑 블랙",
+    "price": 198000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/95/400/400",
+    "createdAt": "2026-01-18T15:00:00Z",
+    "rating": 4.2
+  },
+  {
+    "id": 96,
+    "name": "프라이탁 F11 랩탑 슬리브 15인치 멀티컬러 리사이클드 타폴린",
+    "price": 165000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/96/400/400",
+    "createdAt": "2025-11-08T12:00:00Z",
+    "rating": 4.0
+  },
+  {
+    "id": 97,
+    "name": "카시오 G-SHOCK GA-2100-1A1 카본코어가드 올블랙 (카시오크)",
+    "price": 145000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/97/400/400",
+    "createdAt": "2026-03-20T09:00:00Z",
+    "rating": 4.7
+  },
+  {
+    "id": 98,
+    "name": "[온라인 전용] 코닥 어패럴 레트로 크로스백 옐로우 남녀공용 미니백 스트리트",
+    "price": 42000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/98/400/400",
+    "createdAt": "2025-10-15T14:30:00Z",
+    "rating": 3.8
+  },
+  {
+    "id": 99,
+    "name": "아크테릭스 시에레 40 더플백 블랙 사파이어",
+    "price": 259000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/99/400/400",
+    "createdAt": "2026-02-05T10:00:00Z",
+    "rating": 4.5
+  },
+  {
+    "id": 100,
+    "name": "톰포드 FT5401 클래식 라운드 안경테 블랙/골드",
+    "price": 398000,
+    "category": "accessories",
+    "imageUrl": "https://picsum.photos/seed/100/400/400",
+    "createdAt": "2025-12-28T16:00:00Z",
+    "rating": 4.3
+  }
+]

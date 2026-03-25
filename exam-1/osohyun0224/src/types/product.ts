@@ -14,8 +14,6 @@ export type SortOption = 'price_asc' | 'price_desc' | 'newest' | 'rating';
 
 export interface ProductFilters {
   categories: Category[];
-  minPrice?: number;
-  maxPrice?: number;
   keyword?: string;
   sort: SortOption;
 }
