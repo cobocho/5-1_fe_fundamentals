@@ -51,7 +51,7 @@ describe('ProductSearchFilter', () => {
 		it('체크박스를 클릭하면 해당 카테고리가 추가된다', async () => {
 			const { onChange, user } = setup();
 
-			await user.click(screen.getByLabelText('신발'));
+			await user.click(screen.getByText('신발'));
 
 			expect(onChange).toHaveBeenCalledWith({ categories: ['shoes'] });
 		});
@@ -59,7 +59,7 @@ describe('ProductSearchFilter', () => {
 		it('이미 선택된 카테고리를 클릭하면 제거된다', async () => {
 			const { onChange, user } = setup({ categories: ['shoes', 'tops'] });
 
-			await user.click(screen.getByLabelText('신발'));
+			await user.click(screen.getByText('신발'));
 
 			expect(onChange).toHaveBeenCalledWith({ categories: ['tops'] });
 		});
@@ -67,7 +67,7 @@ describe('ProductSearchFilter', () => {
 		it('마지막 카테고리를 해제하면 null로 호출된다', async () => {
 			const { onChange, user } = setup({ categories: ['shoes'] });
 
-			await user.click(screen.getByLabelText('신발'));
+			await user.click(screen.getByText('신발'));
 
 			expect(onChange).toHaveBeenCalledWith({ categories: null });
 		});

@@ -1,3 +1,8 @@
+import {
+	ToggleGroup,
+	ToggleGroupItem,
+} from '@/components/toggle-group/toggle-group';
+import { cn } from '@/libs/cn';
 import type {
 	Category,
 	ProductsRequest,
@@ -5,7 +10,6 @@ import type {
 } from '../../api/products.types';
 import { CATEGORY_LABELS, SORT_OPTION_LABELS } from '../../api/products.types';
 import { ProductAutoComplete } from '../product-autocomplete/product-autocomplete';
-import { cn } from '@/libs/cn';
 
 interface ProductSearchFilterProps {
 	value: ProductsRequest;
@@ -17,13 +21,6 @@ export const ProductSearchFilter = ({
 	onChange,
 }: ProductSearchFilterProps) => {
 	const categories = value.categories ?? [];
-
-	const toggleCategory = (category: Category) => {
-		const next = categories.includes(category)
-			? categories.filter((c) => c !== category)
-			: [...categories, category];
-		onChange({ categories: next.length > 0 ? next : null });
-	};
 
 	const resetFilters = () => {
 		onChange({
@@ -41,45 +38,42 @@ export const ProductSearchFilter = ({
 				value={value.keyword ?? ''}
 				onChange={(keyword) => onChange({ keyword: keyword || null })}
 			/>
-			<div className="flex gap-2 items-center">
+			<ToggleGroup
+				type="multiple"
+				value={categories}
+				onChange={(next) =>
+					onChange({
+						categories: next.length > 0 ? (next as Category[]) : null,
+					})
+				}
+			>
 				{(Object.keys(CATEGORY_LABELS) as Category[]).map((category) => (
-					<label
+					<ToggleGroupItem
 						key={category}
-						className="flex items-center gap-1"
+						value={category}
 					>
-						<input
-							type="checkbox"
-							checked={categories.includes(category)}
-							onChange={() => toggleCategory(category)}
-						/>
 						{CATEGORY_LABELS[category]}
-					</label>
+					</ToggleGroupItem>
 				))}
-			</div>
-			<fieldset
-				className="flex gap-1"
-				aria-label="정렬"
+			</ToggleGroup>
+			<ToggleGroup
+				type="single"
+				value={value.sort}
+				onChange={(next) =>
+					onChange({ sort: next as ProductsSortOption | null })
+				}
 			>
 				{(Object.keys(SORT_OPTION_LABELS) as ProductsSortOption[]).map(
 					(option) => (
-						<button
+						<ToggleGroupItem
 							key={option}
-							type="button"
-							className={cn(
-								'rounded px-2 py-1 text-sm',
-								value.sort === option ? 'text-black' : 'text-gray-400',
-							)}
-							onClick={() =>
-								onChange({
-									sort: value.sort === option ? null : option,
-								})
-							}
+							value={option}
 						>
 							{SORT_OPTION_LABELS[option]}
-						</button>
+						</ToggleGroupItem>
 					),
 				)}
-			</fieldset>
+			</ToggleGroup>
 			<button
 				type="button"
 				onClick={resetFilters}
