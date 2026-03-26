@@ -5,6 +5,7 @@ export const BASE_URL = '';
 
 export const kyInstance = ky.create({
 	prefixUrl: BASE_URL,
+	retry: 0,
 	hooks: {
 		afterResponse: [
 			async (_, __, response) => {

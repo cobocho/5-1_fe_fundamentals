@@ -9,21 +9,19 @@ import { kyInstance } from '../../../libs/http';
 
 export const productsService = {
 	getProducts: async (params: ProductsRequest) => {
-		return kyInstance.get<ProductsResponse>('/api/products', {
-			searchParams: {
-				categories: params.categories.join(','),
-				keyword: params.keyword,
-				sort: params.sort,
-				page: params.page,
-				size: params.size,
-			},
-		});
+		const searchParams: Record<string, string | number> = {
+			page: params.page,
+			size: params.size,
+		};
+		if (params.categories) searchParams.categories = params.categories.join(',');
+		if (params.keyword) searchParams.keyword = params.keyword;
+		if (params.sort) searchParams.sort = params.sort;
+
+		return kyInstance.get('api/products', { searchParams }).json<ProductsResponse>();
 	},
 	getAutoComplete: async (params: AutoCompleteRequest) => {
-		return kyInstance.get<AutoCompleteResponse>('/api/autocomplete', {
-			searchParams: {
-				keyword: params.keyword,
-			},
-		});
+		return kyInstance
+			.get('api/autocomplete', { searchParams: { keyword: params.keyword } })
+			.json<AutoCompleteResponse>();
 	},
 };

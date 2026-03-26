@@ -11,6 +11,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
 			<img
 				src={product.imageUrl}
 				alt={product.name}
+				className="w-64 h-64 object-cover"
 			/>
 			<p className="truncate font-semibold">{product.name}</p>
 			<p>{formatPrice(product.price)}</p>

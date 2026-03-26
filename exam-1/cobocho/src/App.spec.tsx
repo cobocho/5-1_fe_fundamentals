@@ -1,6 +1,17 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import type { ReactNode } from 'react';
 import App from './App';
+
+const createWrapper = () => {
+	const queryClient = new QueryClient({
+		defaultOptions: { queries: { retry: false } },
+	});
+	return ({ children }: { children: ReactNode }) => (
+		<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+	);
+};
 
 beforeEach(() => {
 	window.history.replaceState({}, '', '/');
@@ -9,7 +20,7 @@ beforeEach(() => {
 describe('URL 동기화', () => {
 	it('카테고리를 선택하면 URL 쿼리스트링에 반영된다', async () => {
 		const user = userEvent.setup();
-		render(<App />);
+		render(<App />, { wrapper: createWrapper() });
 
 		await user.click(screen.getByLabelText('신발'));
 
@@ -19,7 +30,7 @@ describe('URL 동기화', () => {
 
 	it('검색어를 입력하면 URL 쿼리스트링에 반영된다', async () => {
 		const user = userEvent.setup();
-		render(<App />);
+		render(<App />, { wrapper: createWrapper() });
 
 		await user.type(screen.getByRole('textbox'), '나이키');
 
@@ -29,7 +40,7 @@ describe('URL 동기화', () => {
 
 	it('정렬을 선택하면 URL 쿼리스트링에 반영된다', async () => {
 		const user = userEvent.setup();
-		render(<App />);
+		render(<App />, { wrapper: createWrapper() });
 
 		await user.click(screen.getByText('가격 낮은순'));
 
@@ -43,7 +54,7 @@ describe('URL 동기화', () => {
 			'',
 			'/?keyword=아디다스&categories=shoes,tops&sort=rating',
 		);
-		render(<App />);
+		render(<App />, { wrapper: createWrapper() });
 
 		expect(screen.getByRole('textbox')).toHaveValue('아디다스');
 		expect(screen.getByLabelText('신발')).toBeChecked();
@@ -59,7 +70,7 @@ describe('URL 동기화', () => {
 			'/?categories=shoes&sort=price_asc',
 		);
 		const user = userEvent.setup();
-		render(<App />);
+		render(<App />, { wrapper: createWrapper() });
 
 		await user.click(screen.getByText('초기화'));
 

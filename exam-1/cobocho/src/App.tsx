@@ -5,6 +5,7 @@ import {
 	productsSortOptionSchema,
 } from './domain/products/api/products.types';
 import { ProductSearchFilter } from './domain/products/components/product-search-filter';
+import { ProductsInfinityList } from './domain/products/components/products-infinity-list/products-infinity-list';
 import {
 	parseAsArrayOf,
 	parseAsEnum,
@@ -32,9 +33,7 @@ function App() {
 				value={filters}
 				onChange={setFilters}
 			/>
-			<div>
-				<span>상품 목록</span>
-			</div>
+			<ProductsInfinityList filters={filters} />
 		</div>
 	);
 }
