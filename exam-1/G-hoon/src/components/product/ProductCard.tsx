@@ -1,3 +1,4 @@
+import { Star } from 'lucide-react';
 import type { Product } from '@/types/product';
 
 const CATEGORY_LABEL: Record<string, string> = {
@@ -35,9 +36,10 @@ function ProductCard({ product }: ProductCardProps) {
           </strong>
         </p>
         <p className="mt-1 flex items-center gap-0.5 text-[10px] text-gray-400 md:mt-1.5 md:gap-1 md:text-xs">
-          <span className="text-yellow-400" aria-hidden="true">
-            &#9733;
-          </span>
+          <Star
+            className="h-3 w-3 fill-yellow-400 text-yellow-400 md:h-3.5 md:w-3.5"
+            aria-hidden="true"
+          />
           <span>{product.rating.toFixed(1)}</span>
         </p>
       </div>

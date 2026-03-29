@@ -6,6 +6,7 @@ import {
   ProductList,
   ProductListSkeleton,
   ResetFiltersButton,
+  ScrollToTopButton,
   SearchBar,
   SortSelect,
 } from '@/components';
@@ -67,6 +68,8 @@ function App() {
           </ProductErrorBoundary>
         </section>
       </main>
+
+      <ScrollToTopButton />
     </div>
   );
 }

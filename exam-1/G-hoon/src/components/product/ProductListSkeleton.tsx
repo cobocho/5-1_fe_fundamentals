@@ -1,6 +1,4 @@
 const SKELETON_COUNT = 12;
-const GRID_CLASS =
-  'grid grid-cols-2 sm:grid-cols-3 gap-x-2 gap-y-5 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 md:gap-x-4 md:gap-y-8';
 
 function SkeletonCard() {
   return (
@@ -19,7 +17,11 @@ function SkeletonCard() {
 
 function ProductListSkeleton() {
   return (
-    <div className={GRID_CLASS} role="status" aria-label="상품 로딩 중">
+    <div
+      className="grid grid-cols-2 sm:grid-cols-3 gap-x-2 gap-y-5 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 md:gap-x-4 md:gap-y-8"
+      role="status"
+      aria-label="상품 로딩 중"
+    >
       {Array.from({ length: SKELETON_COUNT }, (_, i) => (
         <SkeletonCard
           key={`skeleton-${
