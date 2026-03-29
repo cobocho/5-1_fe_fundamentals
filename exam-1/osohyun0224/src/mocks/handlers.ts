@@ -1,5 +1,5 @@
 import { delay, HttpResponse, http } from 'msw';
-import type { Category, SortOption } from '../types/product';
+import type { Category, SortOption } from '@/types';
 import { autocompleteDictionary } from './autocomplete';
 import { products } from './data';
 
@@ -61,14 +61,14 @@ export const handlers = [
     // 카테고리 필터
     if (categoriesParam) {
       const categories = categoriesParam.split(',') as Category[];
-      filtered = filtered.filter((p) => categories.includes(p.category));
+      filtered = filtered.filter((product) => categories.includes(product.category));
     }
 
     // 키워드 검색
     if (keyword) {
       const lowerKeyword = keyword.toLowerCase();
-      filtered = filtered.filter((p) =>
-        p.name.toLowerCase().includes(lowerKeyword),
+      filtered = filtered.filter((product) =>
+        product.name.toLowerCase().includes(lowerKeyword),
       );
     }
 

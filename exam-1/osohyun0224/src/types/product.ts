@@ -14,6 +14,18 @@ export type SortOption = 'price_asc' | 'price_desc' | 'newest' | 'rating';
 
 export interface ProductFilters {
   categories: Category[];
-  keyword?: string;
+  keyword: string;
   sort: SortOption;
+}
+
+export interface ProductsResponse {
+  products: Product[];
+  total: number;
+  page: number;
+  size: number;
+  totalPages: number;
+}
+
+export interface AutocompleteResponse {
+  suggestions: string[];
 }
