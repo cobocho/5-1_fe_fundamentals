@@ -1,34 +1,83 @@
-import { debounce } from 'es-toolkit';
 import { CircleX, Search } from 'lucide-react';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { useAutocomplete } from '@/hooks/useAutocomplete';
-import { useProductFilters } from '@/hooks/useProductFilters';
+import { useKeyboardNavigation } from '@/hooks/useKeyboardNavigation';
+import { useSearchInput } from '@/hooks/useSearchInput';
+
+function HighlightedText({
+  text,
+  highlight,
+}: {
+  text: string;
+  highlight: string;
+}) {
+  if (!highlight) return <>{text}</>;
+
+  const index = text.toLowerCase().indexOf(highlight.toLowerCase());
+  if (index === -1) return <>{text}</>;
+
+  const before = text.slice(0, index);
+  const match = text.slice(index, index + highlight.length);
+  const after = text.slice(index + highlight.length);
+
+  return (
+    <>
+      {before}
+      <mark className="bg-transparent font-bold text-black">{match}</mark>
+      {after}
+    </>
+  );
+}
 
 interface SuggestionListProps {
   suggestions: string[];
+  activeIndex: number;
+  keyword: string;
+  listboxId: string;
   onSelect: (suggestion: string) => void;
 }
 
-function SuggestionList({ suggestions, onSelect }: SuggestionListProps) {
+function SuggestionList({
+  suggestions,
+  activeIndex,
+  keyword,
+  listboxId,
+  onSelect,
+}: SuggestionListProps) {
+  const activeRef = useRef<HTMLDivElement>(null);
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: activeIndex 변경 시 스크롤 필요
+  useEffect(() => {
+    activeRef.current?.scrollIntoView({ block: 'nearest' });
+  }, [activeIndex]);
+
   if (suggestions.length === 0) return null;
 
   return (
-    <ul
+    <div
+      id={listboxId}
       className="absolute top-full right-0 left-0 z-20 max-h-64 overflow-y-auto border border-t-0 border-gray-200 bg-white shadow-sm"
+      role="listbox"
       aria-label="검색어 추천"
     >
-      {suggestions.map((suggestion) => (
-        <li key={suggestion}>
-          <button
-            type="button"
-            className="w-full px-4 py-2.5 text-left text-sm text-gray-800 transition-colors hover:bg-gray-100"
-            onClick={() => onSelect(suggestion)}
-          >
-            {suggestion}
-          </button>
-        </li>
+      {suggestions.map((suggestion, index) => (
+        <div
+          key={suggestion}
+          ref={index === activeIndex ? activeRef : null}
+          id={`${listboxId}-option-${index}`}
+          role="option"
+          tabIndex={-1}
+          aria-selected={index === activeIndex}
+          className={`cursor-pointer px-4 py-2.5 text-sm text-gray-800 transition-colors ${
+            index === activeIndex ? 'bg-gray-100' : 'hover:bg-gray-100'
+          }`}
+          onClick={() => onSelect(suggestion)}
+          onKeyDown={() => {}}
+        >
+          <HighlightedText text={suggestion} highlight={keyword} />
+        </div>
       ))}
-    </ul>
+    </div>
   );
 }
 
@@ -37,28 +86,36 @@ interface SearchBarProps {
 }
 
 function SearchBar({ placeholder = '상품을 검색해 보세요' }: SearchBarProps) {
-  const { keyword: urlKeyword, setKeyword: setUrlKeyword } =
-    useProductFilters();
-  const inputRef = useRef<HTMLInputElement>(null);
+  const {
+    inputValue,
+    setInputValue,
+    deferredKeyword,
+    hasValue,
+    submit,
+    clear,
+  } = useSearchInput();
   const containerRef = useRef<HTMLElement>(null);
-  const [debouncedKeyword, setDebouncedKeyword] = useState('');
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [hasValue, setHasValue] = useState(urlKeyword.length > 0);
+  const listboxId = useId();
 
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.value = urlKeyword;
-    }
-    setHasValue(urlKeyword.length > 0);
-    setDebouncedKeyword(urlKeyword ? urlKeyword : '');
-  }, [urlKeyword]);
+  const suggestions = useAutocomplete(deferredKeyword);
+  const isListboxOpen = showSuggestions && suggestions.length > 0;
 
-  const debouncedSetKeyword = useMemo(
-    () => debounce((value: string) => setDebouncedKeyword(value), 300),
-    [],
-  );
+  const handleSelect = (value: string) => {
+    submit(value);
+    setShowSuggestions(false);
+  };
 
-  const suggestions = useAutocomplete(debouncedKeyword);
+  const {
+    activeIndex,
+    handleKeyDown,
+    reset: resetNavigation,
+  } = useKeyboardNavigation({
+    options: suggestions,
+    isOpen: isListboxOpen,
+    onSelect: handleSelect,
+    onClose: () => setShowSuggestions(false),
+  });
 
   // 외부 클릭 시 닫기
   useEffect(() => {
@@ -68,55 +125,22 @@ function SearchBar({ placeholder = '상품을 검색해 보세요' }: SearchBarP
         !containerRef.current.contains(e.target as Node)
       ) {
         setShowSuggestions(false);
+        resetNavigation();
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  const submit = useCallback(
-    (value: string) => {
-      if (inputRef.current) {
-        inputRef.current.value = value;
-      }
-      debouncedSetKeyword.cancel();
-      setDebouncedKeyword('');
-      setHasValue(value.length > 0);
-      setUrlKeyword(value);
-      setShowSuggestions(false);
-    },
-    [setUrlKeyword, debouncedSetKeyword],
-  );
+  }, [resetNavigation]);
 
   const handleSubmit = (e: React.SubmitEvent) => {
     e.preventDefault();
-    submit(inputRef.current?.value ?? '');
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setHasValue(value.length > 0);
-    debouncedSetKeyword(value);
-    setShowSuggestions(true);
+    handleSelect(inputValue);
   };
 
   const handleClear = () => {
-    if (inputRef.current) {
-      inputRef.current.value = '';
-      inputRef.current.focus();
-    }
-    setHasValue(false);
-    debouncedSetKeyword.cancel();
-    setDebouncedKeyword('');
-    setUrlKeyword('');
+    clear();
     setShowSuggestions(false);
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Escape') {
-      setShowSuggestions(false);
-      inputRef.current?.blur();
-    }
+    resetNavigation();
   };
 
   return (
@@ -125,12 +149,23 @@ function SearchBar({ placeholder = '상품을 검색해 보세요' }: SearchBarP
         <label className="relative flex-1">
           <span className="sr-only">상품 검색</span>
           <input
-            ref={inputRef}
             type="search"
+            role="combobox"
+            aria-expanded={isListboxOpen}
+            aria-controls={listboxId}
+            aria-activedescendant={
+              activeIndex >= 0
+                ? `${listboxId}-option-${activeIndex}`
+                : undefined
+            }
+            aria-autocomplete="list"
             className="h-full w-full border border-gray-300 bg-gray-50 pl-4 pr-10 text-sm outline-none placeholder:text-gray-400 focus:border-black md:border-black md:bg-white [&::-webkit-search-cancel-button]:hidden"
             placeholder={placeholder}
-            defaultValue={urlKeyword}
-            onChange={handleChange}
+            value={inputValue}
+            onChange={(e) => {
+              setInputValue(e.target.value);
+              setShowSuggestions(true);
+            }}
             onKeyDown={handleKeyDown}
             onFocus={() => setShowSuggestions(true)}
           />
@@ -161,8 +196,14 @@ function SearchBar({ placeholder = '상품을 검색해 보세요' }: SearchBarP
         </button>
       </form>
 
-      {showSuggestions && (
-        <SuggestionList suggestions={suggestions} onSelect={submit} />
+      {isListboxOpen && (
+        <SuggestionList
+          suggestions={suggestions}
+          activeIndex={activeIndex}
+          keyword={deferredKeyword}
+          listboxId={listboxId}
+          onSelect={handleSelect}
+        />
       )}
     </search>
   );
