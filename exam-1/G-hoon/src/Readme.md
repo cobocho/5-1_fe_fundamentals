@@ -51,12 +51,12 @@
 - [x] 기능 구현
   - [x] API 정의 (ky)
   - [x] 상품 목록 조회 (TanStack Query - useSuspenseInfiniteQuery)
-  - [x] 검색 기능 (디바운싱 300ms)
+  - [x] 검색 기능 (es-toolkit 기반 디바운싱 300ms)
   - [x] 자동완성 (TanStack Query - useQuery)
   - [x] 카테고리 필터 / 정렬
   - [x] 무한 스크롤 (IntersectionObserver hook)
-  - [x] URL 상태 동기화 (react-router useSearchParams)
-  - [x] 상품 수 표시 (keepPreviousData)
+  - [x] URL 상태 동기화 (nuqs)
+  - [x] 상품 수 표시 (keepPreviousData, 정렬과 분리된 count query)
   - [x] Suspense + ErrorBoundary (QueryErrorResetBoundary)
   - [x] 에러 처리 (첫 페이지: ErrorBoundary / 다음 페이지: 인라인 재시도)
   - [x] 필터 초기화
