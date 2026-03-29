@@ -11,9 +11,3 @@ export interface Product {
 }
 
 export type SortOption = 'price_asc' | 'price_desc' | 'newest' | 'rating';
-
-export interface ProductFilters {
-  categories: Category[];
-  keyword?: string;
-  sort: SortOption;
-}

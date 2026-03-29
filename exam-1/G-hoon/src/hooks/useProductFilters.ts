@@ -1,62 +1,35 @@
+import { parseAsArrayOf, parseAsStringLiteral, useQueryState } from 'nuqs';
 import { useCallback } from 'react';
-import { useSearchParams } from 'react-router';
 import type { Category, SortOption } from '@/types/product';
 
+const CATEGORIES = ['shoes', 'tops', 'bottoms', 'accessories'] as const;
+const SORT_OPTIONS = ['price_asc', 'price_desc', 'newest', 'rating'] as const;
+
 export function useProductFilters() {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [keyword, setKeyword] = useQueryState('keyword', {
+    defaultValue: '',
+    shallow: false,
+  });
 
-  const keyword = searchParams.get('keyword') ?? '';
-  const categories = (searchParams
-    .get('categories')
-    ?.split(',')
-    .filter(Boolean) ?? []) as Category[];
-  const sort = (searchParams.get('sort') ?? 'newest') as SortOption;
-
-  const setKeyword = useCallback(
-    (value: string) => {
-      setSearchParams((prev) => {
-        if (value) {
-          prev.set('keyword', value);
-        } else {
-          prev.delete('keyword');
-        }
-        return prev;
-      });
-    },
-    [setSearchParams],
+  const [categories, setCategories] = useQueryState(
+    'categories',
+    parseAsArrayOf(parseAsStringLiteral(CATEGORIES))
+      .withDefault([] as Category[])
+      .withOptions({ shallow: false }),
   );
 
-  const setCategories = useCallback(
-    (value: Category[]) => {
-      setSearchParams((prev) => {
-        if (value.length > 0) {
-          prev.set('categories', value.join(','));
-        } else {
-          prev.delete('categories');
-        }
-        return prev;
-      });
-    },
-    [setSearchParams],
-  );
-
-  const setSort = useCallback(
-    (value: SortOption) => {
-      setSearchParams((prev) => {
-        if (value !== 'newest') {
-          prev.set('sort', value);
-        } else {
-          prev.delete('sort');
-        }
-        return prev;
-      });
-    },
-    [setSearchParams],
+  const [sort, setSort] = useQueryState(
+    'sort',
+    parseAsStringLiteral(SORT_OPTIONS)
+      .withDefault('newest' as SortOption)
+      .withOptions({ shallow: false }),
   );
 
   const resetAll = useCallback(() => {
-    setSearchParams({});
-  }, [setSearchParams]);
+    setKeyword(null);
+    setCategories(null);
+    setSort(null);
+  }, [setKeyword, setCategories, setSort]);
 
   return {
     keyword,
