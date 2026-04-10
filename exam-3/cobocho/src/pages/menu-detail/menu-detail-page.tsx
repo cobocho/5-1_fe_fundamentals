@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'sonner';
-import type { MenuItem, MenuOption } from '@/domain/catalog/api';
+import {
+	catalogQuery,
+	type MenuItem,
+	type MenuOption,
+} from '@/domain/catalog/api';
 import { useCartContext } from '@/domain/order/context/cart-context';
 import { MenuInfo } from './components/menu-info';
 import { MenuGridOption } from './components/menu-grid-option';
@@ -18,17 +22,34 @@ import {
 import { VStack } from '@/shared/components/layout';
 import { Button } from '@/shared/components/button';
 import { CtaArea } from '@/shared/components/cta-area';
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { QueryErrorBoundary } from '@/shared/components/query-error-boundary';
+import { MenuDetailError } from './components/menu-detail-error';
 
 export function MenuDetailPage() {
+	return (
+		<QueryErrorBoundary fallback={<MenuDetailError />}>
+			<MenuDetailContent_ />
+		</QueryErrorBoundary>
+	);
+}
+
+function MenuDetailContent_() {
 	const { itemId } = useParams<{ itemId: string }>();
-	const { item, options } = useMenuOptions(itemId!);
+
+	if (!itemId) {
+		throw new Error('Item ID is required');
+	}
+
+	const { data } = useSuspenseQuery(catalogQuery.item(itemId));
+	const { options } = useMenuOptions(itemId);
 
 	return (
 		<div className="pb-24 p-4">
-			<MenuInfo item={item} />
+			<MenuInfo item={data.item} />
 			<OptionProvider options={options}>
 				<MenuOptions
-					item={item}
+					item={data.item}
 					itemOptions={options}
 				/>
 			</OptionProvider>
@@ -130,5 +151,45 @@ function MenuOptions({
 				</Button>
 			</CtaArea>
 		</VStack>
+	);
+}
+
+function MenuDetailError() {
+	const { reset, error } = useErrorBoundaryFallbackProps();
+	const navigate = useNavigate();
+
+	if (error instanceof NotFoundError) {
+		return (
+			<ErrorContent>
+				<ErrorContent.Title>메뉴를 찾을 수 없습니다.</ErrorContent.Title>
+				<ErrorContent.Message>
+					요청하신 메뉴를 찾을 수 없습니다.
+				</ErrorContent.Message>
+				<ErrorContent.GoBack onClick={() => navigate('/')}>
+					메뉴 페이지로 이동
+				</ErrorContent.GoBack>
+			</ErrorContent>
+		);
+	}
+
+	if (
+		error instanceof InternalServerError ||
+		error instanceof ServiceUnavailableError
+	) {
+		return (
+			<ErrorContent>
+				<ErrorContent.Title>오류가 발생했습니다.</ErrorContent.Title>
+				<ErrorContent.Message>{error.message}</ErrorContent.Message>
+				<ErrorContent.Retry onRetry={reset} />
+			</ErrorContent>
+		);
+	}
+
+	return (
+		<ErrorContent>
+			<ErrorContent.Title>오류가 발생했습니다.</ErrorContent.Title>
+			<ErrorContent.Message>{error.message}</ErrorContent.Message>
+			<ErrorContent.Retry onRetry={reset} />
+		</ErrorContent>
 	);
 }

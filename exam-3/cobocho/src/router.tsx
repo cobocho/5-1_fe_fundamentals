@@ -9,16 +9,18 @@ import { CartProvider } from './domain/order/context/cart-context';
 export const router = createBrowserRouter([
 	{
 		Component: () => (
-			<CategoryProvider>
-				<CartProvider>
-					<Outlet />
-				</CartProvider>
-			</CategoryProvider>
+			<CartProvider>
+				<Outlet />
+			</CartProvider>
 		),
 		children: [
 			{
 				path: '/',
-				element: <MenuPage />,
+				element: (
+					<CategoryProvider>
+						<MenuPage />
+					</CategoryProvider>
+				),
 			},
 			{
 				path: '/menu/:itemId',

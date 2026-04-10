@@ -16,5 +16,5 @@ export function useMenuOptions(itemId: string) {
 		[item.optionIds, optionsData.options],
 	);
 
-	return { item, options };
+	return { options };
 }
