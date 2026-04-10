@@ -1,6 +1,7 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { cn } from '@/shared/lib/cn';
 import { catalogQuery, type MenuCategory } from '../../api';
+import { HStack } from '@/shared/components/layout';
 
 interface CategoryTabProps {
 	value: MenuCategory;
@@ -12,7 +13,7 @@ export function CategoryTab({ value, onSelect }: CategoryTabProps) {
 	const categories = data.categories;
 
 	return (
-		<div role="tablist" className="flex gap-2">
+		<HStack>
 			{categories.map((category) => (
 				<button
 					key={category}
@@ -30,6 +31,6 @@ export function CategoryTab({ value, onSelect }: CategoryTabProps) {
 					{category}
 				</button>
 			))}
-		</div>
+		</HStack>
 	);
 }

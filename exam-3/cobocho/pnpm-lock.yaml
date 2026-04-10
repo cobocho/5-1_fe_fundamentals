@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@suspensive/react':
+    specifier: ^3.20.2
+    version: 3.20.2(react@19.2.5)
   '@tanstack/react-query':
     specifier: ^5.97.0
     version: 5.97.0(react@19.2.5)
@@ -601,6 +604,14 @@ packages:
   /@standard-schema/spec@1.1.0:
     resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
     dev: true
+
+  /@suspensive/react@3.20.2(react@19.2.5):
+    resolution: {integrity: sha512-BSh7PidCZlfpW8aXgldNf9n70PTTFw4yo4Zzev+yYSWya6SbR3v8DXsQnA7lJILNztnw22iYnjV6Nmumhhn9rA==}
+    peerDependencies:
+      react: ^18 || ^19
+    dependencies:
+      react: 19.2.5
+    dev: false
 
   /@tailwindcss/node@4.2.2:
     resolution: {integrity: sha512-pXS+wJ2gZpVXqFaUEjojq7jzMpTGf8rU6ipJz5ovJV6PUGmlJ+jvIwGrzdHdQ80Sg+wmQxUFuoW1UAAwHNEdFA==}
