@@ -6,7 +6,7 @@ import {
 	type ReactNode,
 } from 'react';
 import type { MenuOption } from '@/domain/catalog/api';
-import type { Selections } from './option-context.lib';
+import { calcOptionPrice, type Selections } from './option-context.lib';
 
 export interface GridAction {
 	type: 'grid';
@@ -24,6 +24,7 @@ export interface ListAction {
 	type: 'list';
 	optionId: number;
 	label: string;
+	maxCount: number;
 }
 
 export type OptionAction = GridAction | SelectAction | ListAction;
@@ -34,7 +35,10 @@ function optionReducer(state: Selections, action: OptionAction): Selections {
 			return { ...state, [action.optionId]: [action.label] };
 
 		case 'select':
-			return { ...state, [action.optionId]: [action.label] };
+			return {
+				...state,
+				[action.optionId]: action.label ? [action.label] : [],
+			};
 
 		case 'list': {
 			const current = state[action.optionId] ?? [];
@@ -45,6 +49,9 @@ function optionReducer(state: Selections, action: OptionAction): Selections {
 					...state,
 					[action.optionId]: current.filter((l) => l !== action.label),
 				};
+			}
+			if (current.length >= action.maxCount) {
+				return state;
 			}
 			return {
 				...state,
@@ -57,6 +64,7 @@ function optionReducer(state: Selections, action: OptionAction): Selections {
 interface OptionContextValue {
 	options: MenuOption[];
 	selections: Selections;
+	optionPrice: number;
 	dispatch: (action: OptionAction) => void;
 }
 
@@ -70,9 +78,14 @@ interface OptionProviderProps {
 export function OptionProvider({ options, children }: OptionProviderProps) {
 	const [selections, dispatch] = useReducer(optionReducer, {});
 
-	const value = useMemo(
-		() => ({ options, selections, dispatch }),
+	const optionPrice = useMemo(
+		() => calcOptionPrice(options, selections),
 		[options, selections],
+	);
+
+	const value = useMemo(
+		() => ({ options, selections, optionPrice, dispatch }),
+		[options, selections, optionPrice],
 	);
 
 	return (

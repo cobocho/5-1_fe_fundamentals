@@ -19,15 +19,21 @@ export const gridOptionSchema = baseOptionSchema.extend({
 	icons: z.array(z.string()),
 });
 
+export type GridOption = z.infer<typeof gridOptionSchema>;
+
 export const selectOptionSchema = baseOptionSchema.extend({
 	type: z.literal('select'),
 });
+
+export type SelectOption = z.infer<typeof selectOptionSchema>;
 
 export const listOptionSchema = baseOptionSchema.extend({
 	type: z.literal('list'),
 	minCount: z.number(),
 	maxCount: z.number(),
 });
+
+export type ListOption = z.infer<typeof listOptionSchema>;
 
 export const menuOptionSchema = z.discriminatedUnion('type', [
 	gridOptionSchema,

@@ -5,9 +5,15 @@ interface QuantitySelectorProps {
 	onChange: (quantity: number) => void;
 }
 
-export function QuantitySelector({ quantity, onChange }: QuantitySelectorProps) {
+export function QuantitySelector({
+	quantity,
+	onChange,
+}: QuantitySelectorProps) {
 	return (
-		<HStack justify="between" className="py-2">
+		<HStack
+			justify="between"
+			className="py-2"
+		>
 			<span className="text-sm font-medium text-gray-700">수량</span>
 			<HStack gap={3}>
 				<button
