@@ -1,9 +1,5 @@
 import z from 'zod';
 
-export const menuCategorySchema = z.enum(['커피', '음료', '디저트']);
-
-export type MenuCategory = z.infer<typeof menuCategorySchema>;
-
 export const optionTypeSchema = z.enum(['grid', 'select', 'list']);
 
 export type OptionType = z.infer<typeof optionTypeSchema>;
@@ -43,7 +39,7 @@ export type MenuOption = z.infer<typeof menuOptionSchema>;
 
 export const menuItemSchema = z.object({
 	id: z.string(),
-	category: menuCategorySchema,
+	category: z.string(),
 	title: z.string(),
 	description: z.string(),
 	price: z.number(),
@@ -54,7 +50,7 @@ export const menuItemSchema = z.object({
 export type MenuItem = z.infer<typeof menuItemSchema>;
 
 export const categoriesResponseSchema = z.object({
-	categories: z.array(menuCategorySchema),
+	categories: z.array(menuItemSchema.shape.category),
 });
 
 export type CategoriesResponse = z.infer<typeof categoriesResponseSchema>;

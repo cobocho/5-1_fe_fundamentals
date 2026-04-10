@@ -1,10 +1,10 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { catalogQuery, type MenuCategory } from '../../api';
+import { catalogQuery, type MenuItem } from '../../api';
 import { SegmentControl } from '@/shared/components/segment-control';
 
 interface CategoryTabProps {
-	value?: MenuCategory | null;
-	onSelect?: (category: MenuCategory) => void;
+	value?: MenuItem['category'] | null;
+	onSelect?: (category: MenuItem['category']) => void;
 }
 
 export function CategoryTab({ value, onSelect }: CategoryTabProps) {
@@ -17,7 +17,7 @@ export function CategoryTab({ value, onSelect }: CategoryTabProps) {
 	return (
 		<SegmentControl.Root
 			value={resolvedValue}
-			onSelect={(v) => onSelect?.(v as MenuCategory)}
+			onSelect={(v) => onSelect?.(v)}
 		>
 			{categories.map((category) => (
 				<SegmentControl.Item

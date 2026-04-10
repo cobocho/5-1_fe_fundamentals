@@ -1,15 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import type { MenuCategory } from '@/domain/catalog/api/catalog.types';
 import { catalogService } from '@/domain/catalog/api/catalog.service';
 import { TestProvider } from '@/test/test-provider';
 import { CategoryTab } from './category-tab';
 
 vi.mock('@/domain/catalog/api/catalog.service');
 
-const categories: MenuCategory[] = ['커피', '음료', '디저트'];
+const categories: string[] = ['커피', '음료', '디저트'];
 
-function mockGetCategories(cats: MenuCategory[] = categories) {
+function mockGetCategories(cats: string[] = categories) {
 	vi.mocked(catalogService.getCategories).mockResolvedValue({
 		categories: cats,
 	});
@@ -66,8 +65,8 @@ describe('CategoryTab', () => {
 
 	it('카테고리를 클릭하면 활성 상태가 변경된다', async () => {
 		const user = userEvent.setup();
-		let selected: MenuCategory = '커피';
-		const onSelect = (category: MenuCategory) => {
+		let selected: string = '커피';
+		const onSelect = (category: string) => {
 			selected = category;
 		};
 
@@ -152,7 +151,7 @@ describe('CategoryTab', () => {
 		render(
 			<TestProvider>
 				<CategoryTab
-					value={'invalid' as MenuCategory}
+					value="invalid"
 					onSelect={vi.fn()}
 				/>
 			</TestProvider>,

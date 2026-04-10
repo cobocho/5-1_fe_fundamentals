@@ -1,5 +1,4 @@
 import { useQueryState } from 'nuqs';
-import type { MenuCategory } from '@/domain/catalog/api';
 import { CategoryTab } from '@/domain/catalog/components/category-tab/category-tab';
 
 export function MenuPage() {
@@ -8,7 +7,7 @@ export function MenuPage() {
 	return (
 		<div className="p-4">
 			<CategoryTab
-				value={category as MenuCategory}
+				value={category}
 				onSelect={setCategory}
 			/>
 		</div>
