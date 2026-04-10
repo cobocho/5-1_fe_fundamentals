@@ -1,11 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'sonner';
-import {
-	catalogQuery,
-	type MenuItem,
-	type MenuOption,
-} from '@/domain/catalog/api';
+import type { MenuItem, MenuOption } from '@/domain/catalog/api';
 import { useCartContext } from '@/domain/order/context/cart-context';
 import { MenuInfo } from './components/menu-info';
 import { MenuGridOption } from './components/menu-grid-option';
@@ -22,24 +18,21 @@ import {
 import { VStack } from '@/shared/components/layout';
 import { Button } from '@/shared/components/button';
 import { CtaArea } from '@/shared/components/cta-area';
-import { useSuspenseQuery } from '@tanstack/react-query';
-
 export function MenuDetailPage() {
 	const { itemId } = useParams<{ itemId: string }>();
 
 	if (!itemId) {
-		throw new Error('Item ID is required');
+		throw new Error('메뉴 ID가 존재하지 않습니다.');
 	}
 
-	const { data } = useSuspenseQuery(catalogQuery.item(itemId));
-	const { options } = useMenuOptions(itemId);
+	const { item, options } = useMenuOptions(itemId);
 
 	return (
 		<div className="pb-24 p-4">
-			<MenuInfo item={data.item} />
+			<MenuInfo item={item} />
 			<OptionProvider options={options}>
 				<MenuOptions
-					item={data.item}
+					item={item}
 					itemOptions={options}
 				/>
 			</OptionProvider>

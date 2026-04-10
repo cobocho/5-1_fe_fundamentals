@@ -1,10 +1,11 @@
 import { useMemo } from 'react';
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { useSuspenseQueries } from '@tanstack/react-query';
 import { catalogQuery, type MenuOption } from '@/domain/catalog/api';
 
 export function useMenuOptions(itemId: string) {
-	const { data: itemData } = useSuspenseQuery(catalogQuery.item(itemId));
-	const { data: optionsData } = useSuspenseQuery(catalogQuery.options());
+	const [{ data: itemData }, { data: optionsData }] = useSuspenseQueries({
+		queries: [catalogQuery.item(itemId), catalogQuery.options()],
+	});
 
 	const item = itemData.item;
 
@@ -16,5 +17,5 @@ export function useMenuOptions(itemId: string) {
 		[item.optionIds, optionsData.options],
 	);
 
-	return { options };
+	return { item, options };
 }
