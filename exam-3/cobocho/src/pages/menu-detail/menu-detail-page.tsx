@@ -7,7 +7,7 @@ import { MenuInfo } from './components/menu-info';
 import { MenuGridOption } from './components/menu-grid-option';
 import { MenuSelectOption } from './components/menu-select-option';
 import { MenuListOption } from './components/menu-list-option';
-import { QuantitySelector } from './components/quantity-selector';
+import { NumericInput } from '@/shared/components/numeric-input';
 import { useMenuOptions } from './hooks/use-menu-options';
 import {
 	useOptionContext,
@@ -15,7 +15,7 @@ import {
 	validateSelections,
 	flattenSelections,
 } from './context/option-context';
-import { VStack } from '@/shared/components/layout';
+import { HStack, VStack } from '@/shared/components/layout';
 import { Button } from '@/shared/components/button';
 import { CtaArea } from '@/shared/components/cta-area';
 export function MenuDetailPage() {
@@ -119,10 +119,13 @@ function MenuOptions({
 				}
 			})}
 
-			<QuantitySelector
-				quantity={quantity}
-				onChange={setQuantity}
-			/>
+			<HStack justify="between" className="py-2">
+				<span className="text-sm font-medium text-gray-700">수량</span>
+				<NumericInput
+					value={quantity}
+					onChange={setQuantity}
+				/>
+			</HStack>
 
 			<CtaArea>
 				<Button
