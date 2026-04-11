@@ -30,6 +30,7 @@ interface CartContextValue {
 		item: MenuItem,
 		options: OptionSelection[],
 		quantity: number,
+		unitPrice: number,
 	) => void;
 	removeItem: (key: string) => void;
 	updateQuantity: (key: string, quantity: number) => void;
@@ -44,13 +45,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
 	const [items, setItems] = useState<CartItem[]>([]);
 
 	const addItem = useCallback(
-		(item: MenuItem, options: OptionSelection[], quantity: number) => {
+		(item: MenuItem, options: OptionSelection[], quantity: number, unitPrice: number) => {
 			const newItems = addItemToCart({
 				prev: items,
 				item,
 				options,
 				quantity,
-				unitPrice: item.price,
+				unitPrice,
 			});
 
 			setItems(newItems);

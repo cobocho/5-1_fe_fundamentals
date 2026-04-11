@@ -1,13 +1,8 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'sonner';
-import {
-	type MenuItem,
-	type MenuOption,
-	catalogQuery,
-} from '@/domain/catalog/api';
+import type { MenuItem, MenuOption } from '@/domain/catalog/api';
 import { useCartContext } from '@/domain/order/context/cart-context';
-import { useQueryClient } from '@tanstack/react-query';
 import { Button } from '@/shared/components/button';
 import { CtaArea } from '@/shared/components/cta-area';
 import { HStack, VStack } from '@/shared/components/layout';
@@ -76,7 +71,7 @@ function MenuOptions({
 			return;
 		}
 
-		addItem(item, flattenSelections(selections), quantity);
+		addItem(item, flattenSelections(selections), quantity, unitPrice);
 		navigate('/');
 	}
 
