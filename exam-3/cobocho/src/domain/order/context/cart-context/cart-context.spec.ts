@@ -1,5 +1,5 @@
 import type { MenuItem } from '@/domain/catalog/api/catalog.types';
-import type { MenuOption } from '@/types/order';
+import type { GridOption, MenuOption } from '@/types/order';
 import type { OptionSelection } from '../../api/order.types';
 import type { CartItem } from './cart-context';
 import {
@@ -9,6 +9,7 @@ import {
 	calcTotalQuantity,
 	calcUnitPrice,
 	calcCartTotalPrice,
+	validateCartItem,
 } from './cart-context.lib';
 
 const mockItem: MenuItem = {
@@ -257,5 +258,106 @@ describe('서버 가격 변동 시나리오', () => {
 		);
 
 		expect(calcCartTotalPrice(items, [mockItem], updatedOptions)).toBe(7600);
+	});
+});
+
+describe('validateCartItem', () => {
+	const listOption: MenuOption = {
+		id: 3,
+		name: '토핑',
+		type: 'list',
+		required: false,
+		labels: ['펄', '휘핑', '시럽'],
+		prices: [500, 500, 0],
+		minCount: 0,
+		maxCount: 2,
+	};
+
+	const itemWithList: MenuItem = {
+		...mockItem,
+		optionIds: [1, 2, 3],
+	};
+
+	it('옵션/라벨이 모두 유효하면 ok를 반환한다', () => {
+		const cartItem = createCartItem({ options: [hotOption] });
+		const result = validateCartItem(cartItem, mockItem, mockOptions);
+		expect(result).toEqual({ kind: 'ok' });
+	});
+
+	it('라벨이 삭제되면 invalid를 반환한다', () => {
+		const cartItem = createCartItem({ options: [iceOption] });
+		// ICE 라벨이 제거된 상황
+		const updatedOptions: MenuOption[] = [
+			{ ...(mockOptions[0] as GridOption), labels: ['HOT'], prices: [0] },
+			mockOptions[1],
+		];
+		const result = validateCartItem(cartItem, mockItem, updatedOptions);
+		expect(result.kind).toBe('invalid');
+		if (result.kind === 'invalid') {
+			expect(result.reasons.some((r) => r.includes('ICE'))).toBe(true);
+		}
+	});
+
+	it('옵션 자체가 삭제되면 invalid를 반환한다', () => {
+		const cartItem = createCartItem({ options: [hotOption] });
+		const result = validateCartItem(cartItem, mockItem, [mockOptions[1]]);
+		expect(result.kind).toBe('invalid');
+	});
+
+	it('메뉴의 optionIds에 포함되지 않은 옵션이 담겨있으면 invalid', () => {
+		const cartItem = createCartItem({ options: [hotOption] });
+		const menuWithoutOption: MenuItem = { ...mockItem, optionIds: [2] };
+		const result = validateCartItem(cartItem, menuWithoutOption, mockOptions);
+		expect(result.kind).toBe('invalid');
+	});
+
+	it('필수 옵션이 누락되면 invalid', () => {
+		// 사이즈가 required:true로 바뀐 경우
+		const cartItem = createCartItem({ options: [hotOption] });
+		const updatedOptions: MenuOption[] = [
+			mockOptions[0],
+			{ ...mockOptions[1], required: true },
+		];
+		const result = validateCartItem(cartItem, mockItem, updatedOptions);
+		expect(result.kind).toBe('invalid');
+		if (result.kind === 'invalid') {
+			expect(result.reasons.some((r) => r.includes('사이즈'))).toBe(true);
+		}
+	});
+
+	it('list 타입의 개수 규칙이 바뀌어 위배되면 invalid', () => {
+		const cartItem = createCartItem({
+			options: [{ optionId: 3, labels: ['펄', '휘핑'] }],
+		});
+		const stricter: MenuOption[] = [
+			...mockOptions,
+			{ ...listOption, maxCount: 1 },
+		];
+		const result = validateCartItem(cartItem, itemWithList, stricter);
+		expect(result.kind).toBe('invalid');
+	});
+
+	it('가격만 바뀐 경우는 invalid가 아니다', () => {
+		const cartItem = createCartItem({ options: [iceOption] });
+		const updatedOptions: MenuOption[] = mockOptions.map((o) =>
+			o.id === 1 ? { ...o, prices: [0, 999] } : o,
+		);
+		expect(validateCartItem(cartItem, mockItem, updatedOptions)).toEqual({
+			kind: 'ok',
+		});
+	});
+
+	it('여러 위반이 동시에 발생하면 모두 reasons에 담긴다', () => {
+		// required 누락 + 라벨 삭제를 동시에
+		const cartItem = createCartItem({ options: [iceOption] });
+		const updatedOptions: MenuOption[] = [
+			{ ...(mockOptions[0] as GridOption), labels: ['HOT'], prices: [0] },
+			{ ...mockOptions[1], required: true },
+		];
+		const result = validateCartItem(cartItem, mockItem, updatedOptions);
+		expect(result.kind).toBe('invalid');
+		if (result.kind === 'invalid') {
+			expect(result.reasons.length).toBeGreaterThanOrEqual(2);
+		}
 	});
 });

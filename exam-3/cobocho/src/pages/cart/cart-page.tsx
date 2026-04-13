@@ -3,18 +3,23 @@ import { useEffect, useMemo } from 'react';
 
 import { catalogQuery } from '@/domain/catalog/api';
 import { useCartContext } from '@/domain/order/context/cart-context';
-import { cartItemKey } from '@/domain/order/context/cart-context/cart-context.lib';
+import {
+  cartItemKey,
+  validateCartItem,
+} from '@/domain/order/context/cart-context/cart-context.lib';
 import { CtaArea } from '@/shared/components/cta-area';
 import { VStack } from '@/shared/components/layout';
 import { Scaffold } from '@/shared/components/scaffold';
+import { CartError } from './components/cart-error';
 import { CartItem } from './components/cart-item';
+import { CartSkeleton } from './components/cart-skeleton';
 import { EmptyCart } from './components/empty-cart';
 import { OrderButton } from './components/order-button';
 
 export const CartPage = Scaffold.with(
   {
-    error: <p>장바구니를 불러오지 못했습니다.</p>,
-    fallback: <p>로딩 중...</p>,
+    error: <CartError />,
+    fallback: <CartSkeleton />,
   },
   function CartPage() {
     const queryClient = useQueryClient();
@@ -71,12 +76,14 @@ export const CartPage = Scaffold.with(
                   </div>
                 );
               }
+              const status = validateCartItem(cartItem, menuItem, allOptions);
               return (
                 <CartItem
                   key={key}
                   cartItem={cartItem}
                   menuItem={menuItem}
                   allOptions={allOptions}
+                  status={status}
                   onRemove={removeItem}
                   onUpdateQuantity={updateQuantity}
                 />

@@ -107,6 +107,60 @@ export function calcUnitPrice(
 }
 
 /**
+ * 장바구니 항목의 유효성 상태를 나타냅니다.
+ */
+export type CartItemStatus =
+  | { kind: 'ok' }
+  | { kind: 'invalid'; reasons: string[] };
+
+/**
+ * 장바구니 항목이 현재 서버 스펙(menuItem, allOptions)과 호환되는지 검증합니다.
+ * 가격 변동은 invalid로 보지 않습니다 (자동 반영 영역).
+ */
+export function validateCartItem(
+  cartItem: CartItem,
+  menuItem: MenuItem,
+  allOptions: MenuOption[],
+): CartItemStatus {
+  const reasons: string[] = [];
+  const selectedMap = new Map(
+    cartItem.options.map((s) => [s.optionId, s] as const),
+  );
+
+  for (const sel of cartItem.options) {
+    if (!menuItem.optionIds.includes(sel.optionId)) {
+      reasons.push('이 메뉴에 적용할 수 없는 옵션이 포함되어 있어요');
+      continue;
+    }
+    const opt = allOptions.find((o) => o.id === sel.optionId);
+    if (!opt) {
+      reasons.push('옵션이 삭제되었어요');
+      continue;
+    }
+    for (const label of sel.labels) {
+      if (!opt.labels.includes(label)) {
+        reasons.push(`"${label}" 선택지가 사라졌어요`);
+      }
+    }
+    if (opt.type === 'list') {
+      const n = sel.labels.length;
+      if (n < opt.minCount || n > opt.maxCount) {
+        reasons.push(`"${opt.name}" 선택 개수 규칙이 변경됐어요`);
+      }
+    }
+  }
+
+  for (const optId of menuItem.optionIds) {
+    const opt = allOptions.find((o) => o.id === optId);
+    if (opt?.required && !selectedMap.has(optId)) {
+      reasons.push(`"${opt.name}" 옵션 선택이 필요해요`);
+    }
+  }
+
+  return reasons.length ? { kind: 'invalid', reasons } : { kind: 'ok' };
+}
+
+/**
  * 장바구니 전체 금액을 계산합니다.
  * 서버에서 삭제된 항목(allItems에 없는 itemId)은 합산에서 제외합니다.
  */

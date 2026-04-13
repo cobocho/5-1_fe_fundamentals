@@ -12,6 +12,7 @@ import { useCartContext } from '@/domain/order/context/cart-context';
 import {
   calcCartTotalPrice,
   calcUnitPrice,
+  validateCartItem,
 } from '@/domain/order/context/cart-context/cart-context.lib';
 import { Button } from '@/shared/components/button';
 import { BadRequestError } from '@/shared/lib/error';
@@ -28,6 +29,12 @@ export function OrderButton() {
   const allItems = itemsData.items;
   const itemMap = new Map(allItems.map((i) => [i.id, i]));
   const totalPrice = calcCartTotalPrice(items, allItems, allOptions);
+
+  const hasInvalidItem = items.some((ci) => {
+    const menuItem = itemMap.get(ci.itemId);
+    if (!menuItem) return true; // 판매 종료된 항목도 블로킹
+    return validateCartItem(ci, menuItem, allOptions).kind === 'invalid';
+  });
 
   const { mutate, isPending } = useMutation({
     mutationFn: orderService.createOrder,
@@ -70,8 +77,15 @@ export function OrderButton() {
   }
 
   return (
-    <Button fullWidth size="lg" disabled={isPending} onClick={handleOrder}>
-      {`${totalPrice.toLocaleString()}원 주문하기`}
+    <Button
+      fullWidth
+      size="lg"
+      disabled={isPending || hasInvalidItem}
+      onClick={handleOrder}
+    >
+      {hasInvalidItem
+        ? '수정이 필요한 항목이 있어요'
+        : `${totalPrice.toLocaleString()}원 주문하기`}
     </Button>
   );
 }
