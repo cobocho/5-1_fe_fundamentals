@@ -15,7 +15,7 @@ import {
   validateCartItem,
 } from '@/domain/order/context/cart-context/cart-context.lib';
 import { Button } from '@/shared/components/button';
-import { BadRequestError } from '@/shared/lib/error';
+import { BadRequestError, HttpError } from '@/shared/lib/error';
 
 export function OrderButton() {
   const navigate = useNavigate();
@@ -50,6 +50,10 @@ export function OrderButton() {
         await queryClient.invalidateQueries({
           queryKey: catalogQuery.items().queryKey,
         });
+        toast.error(error.message);
+      }
+
+      if (error instanceof HttpError) {
         toast.error(error.message);
       }
     },
